@@ -4,6 +4,7 @@ import { useAuth } from '@/auth/AuthProvider';
 import { useCart } from '@/cart/CartProvider';
 import { useTheme } from '@/lib/theme';
 import { Icon } from './Icon';
+import { WakeUpNotice } from './WakeUpNotice';
 import styles from './Layout.module.css';
 
 function Search() {
@@ -109,6 +110,9 @@ export function Layout() {
         </div>
       </header>
       <main id="main" className={styles.main}>
+        <div className={styles.wake}>
+          <WakeUpNotice />
+        </div>
         <Outlet />
       </main>
       <footer className={styles.footer}>

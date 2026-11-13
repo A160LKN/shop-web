@@ -128,6 +128,9 @@
   font-variant-numeric: tabular-nums;
 }
 
+.wake:not(:empty) {
+  margin-bottom: var(--space-4);
+}
 .main {
   flex: 1;
   width: 100%;
