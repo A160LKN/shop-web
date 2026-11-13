@@ -1,0 +1,73 @@
+.region {
+  position: fixed;
+  right: var(--space-4);
+  bottom: var(--space-4);
+  z-index: 20;
+  display: grid;
+  gap: var(--space-2);
+  width: min(380px, calc(100vw - 2 * var(--space-4)));
+  pointer-events: none;
+}
+.toast {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-3) var(--space-3) var(--space-4);
+  background: var(--ink);
+  color: var(--bg);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-raised);
+  font-weight: 500;
+  pointer-events: auto;
+  animation: rise 0.18s ease-out;
+}
+.toast > span {
+  flex: 1;
+}
+/* полоска слева — цвет результата */
+.success {
+  box-shadow:
+    inset 4px 0 0 var(--tag),
+    var(--shadow-raised);
+}
+.info {
+  box-shadow:
+    inset 4px 0 0 var(--accent),
+    var(--shadow-raised);
+}
+.error {
+  box-shadow:
+    inset 4px 0 0 var(--danger),
+    var(--shadow-raised);
+}
+.action {
+  color: var(--tag);
+  font-weight: 700;
+  white-space: nowrap;
+}
+.close {
+  width: 32px;
+  height: 32px;
+  background: none;
+  border: 0;
+  color: inherit;
+  font-size: var(--text-lg);
+  opacity: 0.7;
+  cursor: pointer;
+}
+.close:hover {
+  opacity: 1;
+}
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+}
+@media (max-width: 600px) {
+  .region {
+    left: var(--space-4);
+    right: var(--space-4);
+    width: auto;
+  }
+}

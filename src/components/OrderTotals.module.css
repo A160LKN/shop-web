@@ -1,0 +1,25 @@
+.totals {
+  display: grid;
+  gap: var(--space-2);
+  margin: 0;
+}
+.totals div {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-4);
+}
+.totals dd {
+  margin: 0;
+  font-variant-numeric: tabular-nums;
+}
+.discount dd {
+  color: var(--success);
+  font-weight: 600;
+}
+.total {
+  padding-top: var(--space-2);
+  border-top: 1px solid var(--line);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: var(--text-lg);
+}

@@ -1,0 +1,64 @@
+.banner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  margin-bottom: var(--space-5);
+  padding: var(--space-5) var(--space-6);
+  background:
+    repeating-linear-gradient(
+      -45deg,
+      transparent 0 14px,
+      color-mix(in srgb, var(--tag) 9%, transparent) 14px 28px
+    ),
+    var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+}
+.title {
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  font-weight: 700;
+}
+.text {
+  color: var(--ink-muted);
+  margin-top: var(--space-1);
+}
+/* код — в виде большого ценника: та же форма, что у цен в каталоге */
+.code {
+  position: relative;
+  padding: 12px 22px 12px 40px;
+  background: var(--tag);
+  color: var(--tag-ink);
+  border: 0;
+  clip-path: polygon(18px 0, 100% 0, 100% 100%, 18px 100%, 0 50%);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  cursor: copy;
+  transition: transform 0.15s;
+}
+.code:hover {
+  transform: rotate(-2deg);
+}
+.hole {
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  width: 9px;
+  height: 9px;
+  margin-top: -4.5px;
+  border-radius: 50%;
+  background: var(--surface);
+}
+@media (max-width: 600px) {
+  .banner {
+    padding: var(--space-4);
+  }
+  .title {
+    font-size: var(--text-lg);
+  }
+}

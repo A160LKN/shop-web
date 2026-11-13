@@ -1,0 +1,236 @@
+.dashboard {
+  display: grid;
+  gap: var(--space-4);
+}
+.kpis {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-4);
+  margin: 0;
+}
+.kpi {
+  padding: var(--space-4) var(--space-5);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+}
+.kpi dt {
+  color: var(--ink-muted);
+  font-size: var(--text-sm);
+  font-weight: 500;
+}
+.kpi dd {
+  margin: var(--space-1) 0 0;
+  font-family: var(--font-display);
+  font-size: var(--text-2xl);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+.row {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: var(--space-4);
+  align-items: start;
+}
+.panel {
+  display: grid;
+  gap: var(--space-4);
+  padding: var(--space-5);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+}
+.chart {
+  display: grid;
+  gap: var(--space-4);
+  margin: 0;
+}
+.chartTitle {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-3);
+  font-family: var(--font-body);
+  font-size: var(--text-md);
+  font-weight: 600;
+  letter-spacing: 0;
+}
+.muted {
+  color: var(--ink-muted);
+  font-weight: 500;
+}
+
+/* столбцы: тонкие, скругление только сверху, ось — едва заметная */
+.bars {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: var(--space-2);
+  height: 200px;
+  padding-top: var(--space-5);
+  border-bottom: 1px solid var(--line);
+}
+.barSlot {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  height: 100%;
+  outline-offset: 4px;
+}
+.bar {
+  width: min(36px, 70%);
+  background: var(--accent);
+  border-radius: 4px 4px 0 0;
+  transition: opacity 0.15s;
+}
+.barSlot:hover .bar,
+.barSlot:focus-visible .bar {
+  opacity: 0.8;
+}
+.barValue {
+  margin-bottom: var(--space-1);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+.barLabel {
+  position: absolute;
+  bottom: -26px;
+  color: var(--ink-muted);
+  font-size: var(--text-sm);
+  white-space: nowrap;
+}
+.today {
+  color: var(--ink);
+  font-weight: 600;
+}
+.tooltip {
+  position: absolute;
+  bottom: calc(100% - 12px);
+  z-index: 2;
+  display: none;
+  padding: var(--space-2) var(--space-3);
+  background: var(--ink);
+  color: var(--bg);
+  border-radius: var(--radius-sm);
+  font-size: var(--text-sm);
+  white-space: nowrap;
+  text-align: center;
+  pointer-events: none;
+}
+.tooltip strong {
+  display: block;
+}
+.barSlot:hover .tooltip,
+.barSlot:focus-visible .tooltip {
+  display: block;
+}
+.barSlot:hover .barValue,
+.barSlot:focus-visible .barValue {
+  visibility: hidden;
+}
+.chart {
+  padding-bottom: var(--space-5); /* место под подписи дней */
+}
+
+.statusList,
+.lowList {
+  display: grid;
+  gap: var(--space-3);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.statusList li {
+  display: grid;
+  grid-template-columns: 110px 1fr 36px;
+  align-items: center;
+  gap: var(--space-3);
+}
+.statusName {
+  color: inherit;
+  text-decoration: none;
+  font-size: var(--text-sm);
+  font-weight: 500;
+}
+.statusName:hover {
+  color: var(--accent);
+}
+.track {
+  height: 10px;
+  background: var(--surface-sunken);
+  border-radius: 5px;
+}
+.fill {
+  height: 100%;
+  background: var(--accent);
+  border-radius: 5px;
+}
+.count {
+  text-align: right;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-variant-numeric: tabular-nums;
+}
+.table th,
+.table td {
+  padding: var(--space-2) 0;
+  text-align: left;
+  border-bottom: 1px solid var(--line);
+}
+.table th {
+  color: var(--ink-muted);
+  font-size: var(--text-sm);
+  font-weight: 600;
+}
+.table tr:last-child td {
+  border-bottom: 0;
+}
+.table .num {
+  text-align: right;
+  padding-left: var(--space-3);
+  white-space: nowrap;
+}
+.table a {
+  color: inherit;
+  font-weight: 500;
+}
+.lowList li {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  gap: var(--space-3);
+  align-items: baseline;
+}
+.lowList a {
+  color: var(--accent);
+  font-weight: 600;
+  font-size: var(--text-sm);
+}
+.low {
+  color: var(--cat-accessories);
+  font-weight: 600;
+}
+.out {
+  color: var(--danger);
+  font-weight: 600;
+}
+
+@media (max-width: 900px) {
+  .row {
+    grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 600px) {
+  .kpis {
+    grid-template-columns: 1fr;
+  }
+  .kpi dd {
+    font-size: var(--text-xl);
+  }
+}

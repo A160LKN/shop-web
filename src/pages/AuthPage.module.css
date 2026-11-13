@@ -1,0 +1,23 @@
+.page {
+  display: grid;
+  place-items: center;
+  padding: var(--space-6) 0;
+}
+.form {
+  display: grid;
+  gap: var(--space-4);
+  width: 100%;
+  max-width: 400px;
+  padding: var(--space-6);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+}
+.switch {
+  text-align: center;
+  color: var(--ink-muted);
+}
+.switch a {
+  color: var(--accent);
+  font-weight: 600;
+}

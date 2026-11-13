@@ -1,0 +1,27 @@
+.badge {
+  display: inline-flex;
+  align-items: center;
+  min-height: 26px;
+  padding: 0 var(--space-3);
+  border-radius: 999px;
+  font-size: var(--text-sm);
+  font-weight: 600;
+  white-space: nowrap;
+}
+.created {
+  background: var(--warning-soft);
+  color: var(--ink);
+}
+.paid,
+.shipped {
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+.delivered {
+  background: var(--success-soft);
+  color: var(--success);
+}
+.cancelled {
+  background: var(--surface-sunken);
+  color: var(--ink-muted);
+}

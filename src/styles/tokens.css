@@ -1,0 +1,106 @@
+/* Дизайн-токены «Дүкен». Цвета — только отсюда: тёмная тема переопределяет те же имена. */
+:root {
+  color-scheme: light;
+  --bg: #f2f4f7;
+  --surface: #ffffff;
+  --surface-sunken: #e8ecf1;
+  --ink: #101820;
+  --ink-muted: #5b6672;
+  --line: #d9dee5;
+  --accent: #0a7e8c;
+  --accent-ink: #ffffff;
+  --accent-soft: #e1f2f4;
+  --tag: #ffd23f; /* жёлтый ценник — главный акцент, только для цен и скидок */
+  --tag-ink: #101820;
+  --danger: #b42318;
+  --danger-soft: #fdecea;
+  --success: #15803d;
+  --success-soft: #e7f6ec;
+  --warning-soft: #fff6d6;
+  --focus: #0a7e8c;
+
+  /* Категории — у каждой свой цвет иллюстрации */
+  --cat-electronics: #3b5bdb;
+  --cat-home: #0a7e8c;
+  --cat-accessories: #b45309;
+  --cat-food: #7c3aed;
+  --cat-other: #5b6672;
+
+  --font-display: 'Unbounded', system-ui, sans-serif;
+  --font-body: 'Onest', system-ui, sans-serif;
+
+  /* Шкала 1,25: 13 / 16 / 20 / 25 / 31 / 39 */
+  --text-sm: 0.8125rem;
+  --text-md: 1rem;
+  --text-lg: 1.25rem;
+  --text-xl: 1.5625rem;
+  --text-2xl: 1.9375rem;
+  --text-3xl: 2.4375rem;
+
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --shadow-raised: 0 1px 2px rgb(16 24 32 / 6%), 0 8px 24px rgb(16 24 32 / 8%);
+  --content-width: 1200px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    color-scheme: dark;
+    --bg: #0e141b;
+    --surface: #161e27;
+    --surface-sunken: #1d2732;
+    --ink: #eef2f6;
+    --ink-muted: #9aa6b2;
+    --line: #26313d;
+    --accent: #3cc4d2;
+    --accent-ink: #0e141b;
+    --accent-soft: #123038;
+    --danger: #f87171;
+    --danger-soft: #3a1717;
+    --success: #4ade80;
+    --success-soft: #11291a;
+    --warning-soft: #33290c;
+    --focus: #3cc4d2;
+    --cat-electronics: #7c95f5;
+    --cat-home: #3cc4d2;
+    --cat-accessories: #f59e0b;
+    --cat-food: #a78bfa;
+    --cat-other: #9aa6b2;
+    --shadow-raised: 0 1px 2px rgb(0 0 0 / 30%), 0 8px 24px rgb(0 0 0 / 35%);
+  }
+}
+
+:root[data-theme='dark'] {
+  color-scheme: dark;
+  --bg: #0e141b;
+  --surface: #161e27;
+  --surface-sunken: #1d2732;
+  --ink: #eef2f6;
+  --ink-muted: #9aa6b2;
+  --line: #26313d;
+  --accent: #3cc4d2;
+  --accent-ink: #0e141b;
+  --accent-soft: #123038;
+  --danger: #f87171;
+  --danger-soft: #3a1717;
+  --success: #4ade80;
+  --success-soft: #11291a;
+  --warning-soft: #33290c;
+  --focus: #3cc4d2;
+  --cat-electronics: #7c95f5;
+  --cat-home: #3cc4d2;
+  --cat-accessories: #f59e0b;
+  --cat-food: #a78bfa;
+  --cat-other: #9aa6b2;
+  --shadow-raised: 0 1px 2px rgb(0 0 0 / 30%), 0 8px 24px rgb(0 0 0 / 35%);
+}

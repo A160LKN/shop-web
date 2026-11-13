@@ -1,0 +1,35 @@
+.stepper {
+  display: inline-grid;
+  grid-template-columns: 44px 48px 44px;
+  align-items: center;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  background: var(--surface);
+}
+.stepper button {
+  height: 42px;
+  background: none;
+  border: 0;
+  font-size: var(--text-lg);
+  cursor: pointer;
+}
+.stepper button:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+.wide {
+  display: grid;
+  grid-template-columns: 44px 1fr 44px;
+  border-color: var(--accent);
+  background: var(--accent-soft);
+}
+.wide output::after {
+  content: ' в корзине';
+  font-weight: 500;
+  color: var(--ink-muted);
+}
+.stepper output {
+  text-align: center;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}

@@ -1,0 +1,77 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  quality:
+    name: Типы, линтер, юнит-тесты, сборка
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: TypeScript
+        run: npm run typecheck
+      - name: ESLint
+        run: npm run lint
+      - name: Prettier
+        run: npm run format:check
+      - name: Юнит- и компонентные тесты с покрытием
+        run: npm run test:coverage
+      - name: Сборка
+        run: npm run build
+
+  e2e:
+    name: E2E на настоящем Shop API
+    needs: quality
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v7
+      - name: Скачать Shop API
+        uses: actions/checkout@v7
+        with:
+          repository: A160LKN/shop-api
+          path: shop-api
+      - name: Запустить API, PostgreSQL и платёжный шлюз
+        working-directory: shop-api
+        run: docker compose up --build --detach --wait
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+
+      - name: Контракт API — типы во фронтенде совпадают с настоящим API
+        run: |
+          npx openapi-typescript http://localhost:8000/openapi.json -o /tmp/schema.d.ts
+          diff -u src/api/schema.d.ts /tmp/schema.d.ts || {
+            echo "::error::API изменился: обновите src/api/openapi.json и выполните npm run api:types"
+            exit 1
+          }
+
+      - name: Установить браузер
+        run: npx playwright install --with-deps chromium
+      - name: E2E-тесты
+        run: npm run test:e2e
+        env:
+          VITE_API_URL: http://localhost:8000
+
+      - name: Отчёт Playwright при падении
+        if: failure()
+        uses: actions/upload-artifact@v7
+        with:
+          name: playwright-report
+          path: playwright-report/
+          retention-days: 14
+      - name: Логи API при падении
+        if: failure()
+        working-directory: shop-api
+        run: docker compose logs api payments

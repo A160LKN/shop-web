@@ -1,0 +1,10 @@
+.note {
+  font-size: var(--text-sm);
+  font-weight: 600;
+}
+.low {
+  color: var(--cat-accessories);
+}
+.out {
+  color: var(--ink-muted);
+}
