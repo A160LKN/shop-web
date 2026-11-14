@@ -1,5 +1,7 @@
 # Dependabot раз в месяц проверяет зависимости и присылает PR с обновлениями;
-# мелкие обновления собраны в один PR, чтобы не засыпать репозиторий
+# мелкие обновления собраны в один PR, чтобы не засыпать репозиторий.
+# Мажорные версии библиотек не предлагаются: они ломают совместимость
+# (например, vitest 3 и @vitest/coverage-v8 5) и обновляются вручную, пакетами
 version: 2
 updates:
   - package-ecosystem: npm
@@ -10,11 +12,14 @@ updates:
     groups:
       minor-and-patch:
         update-types: [minor, patch]
+    ignore:
+      - dependency-name: "*"
+        update-types: ["version-update:semver-major"]
   - package-ecosystem: github-actions
     directory: "/"
     schedule:
       interval: monthly
     open-pull-requests-limit: 3
     groups:
-      minor-and-patch:
-        update-types: [minor, patch]
+      actions:
+        patterns: ["*"]
