@@ -2,6 +2,8 @@
 
 [![CI](https://github.com/A160LKN/shop-web/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/A160LKN/shop-web/actions/workflows/ci.yml)
 
+**Русский** · [English](README.en.md)
+
 Фронтенд на React и TypeScript для моего бэкенда [Shop API](https://github.com/A160LKN/shop-api): каталог, корзина, оформление заказа с промокодом, оплата через платёжный шлюз, история заказов и админка. Вместе с Shop API — полноценное fullstack-приложение.
 
 **[Открыть магазин →](https://shop-web-azure.vercel.app)** Вход администратора: `admin@shop.kz` / `admin12345`, промокод `WELCOME10`, оплата учебная. API на бесплатном сервере засыпает после простоя, поэтому первая загрузка может идти до минуты.
