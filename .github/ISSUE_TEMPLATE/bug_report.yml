@@ -1,7 +1,7 @@
 name: Баг-репорт
 description: Что-то работает не так, как должно
-title: "[Баг] "
-labels: ["bug"]
+title: '[Баг] '
+labels: ['bug']
 body:
   - type: textarea
     id: summary
@@ -37,7 +37,7 @@ body:
     id: environment
     attributes:
       label: Окружение
-      placeholder: "Например: Chrome 131, macOS; живой сайт / локально; версия или коммит"
+      placeholder: 'Например: Chrome 131, macOS; живой сайт / локально; версия или коммит'
   - type: dropdown
     id: severity
     attributes:

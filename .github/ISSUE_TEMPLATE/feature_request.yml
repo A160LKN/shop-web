@@ -1,7 +1,7 @@
 name: Предложение
 description: Идея, как сделать лучше
-title: "[Идея] "
-labels: ["enhancement"]
+title: '[Идея] '
+labels: ['enhancement']
 body:
   - type: textarea
     id: problem
