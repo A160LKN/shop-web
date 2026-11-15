@@ -47,7 +47,8 @@ export function ProductCard({ product }: { product: Product }) {
           variant="secondary"
           disabled={product.stock === 0}
           onClick={add}
-          aria-label={`Добавить «${product.name}» в корзину`}
+          // Видимый текст — начало имени кнопки: голосовое управление «нажми В корзину» сработает
+          aria-label={`${product.stock === 0 ? 'Нет в наличии' : 'В корзину'}: ${product.name}`}
         >
           {product.stock === 0 ? 'Нет в наличии' : 'В корзину'}
         </Button>

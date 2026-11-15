@@ -38,7 +38,7 @@ export function Toaster({ children }: { children: ReactNode }) {
   return (
     <ToastContext value={value}>
       {children}
-      <div className={styles.region} aria-live="polite" aria-label="Уведомления">
+      <div className={styles.region} role="region" aria-live="polite" aria-label="Уведомления">
         {toasts.map((toast) => (
           <div key={toast.id} className={`${styles.toast} ${styles[toast.tone]}`} data-testid="toast">
             <span>{toast.text}</span>

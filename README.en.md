@@ -52,12 +52,12 @@ A React and TypeScript frontend for my [Shop API](https://github.com/A160LKN/sho
 - **The admin panel is a separate bundle** — customers never download its code.
 - **Design**: custom, no UI kit. The signature element is a yellow price tag with a hole for the string, like on a market stall; products have no photos, so an icon is picked from the meaning of the name. Light and dark themes.
 
-## Tests — 120 component and 25 E2E
+## Tests — 120 component and 29 E2E
 
-| Level                    | Tools                                                              | What they check                                                                                                                                                                                                                                  |
-| ------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| Unit and component — 120 | Vitest, Testing Library, **MSW** (API mocked at the network level) | money and plural forms, the cart and its limits, pages in loading, error and empty states, cart reconciliation, every payment gateway response, protected pages, safe post-login redirect, catalogue filters in the URL, totals, admin dashboard |
-| E2E — 25                 | Playwright against the **real Shop API** in Docker                 | the customer journey from catalogue to payment, a declined card and retry, gateway timeout, cancellation with refund, admin adds a product and delivers an order, sorting and filters, admin dashboard, permissions, mobile layout               |
+| Level                    | Tools                                                              | What they check                                                                                                                                                                                                                                                                          |
+| ------------------------ | ------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Unit and component — 120 | Vitest, Testing Library, **MSW** (API mocked at the network level) | money and plural forms, the cart and its limits, pages in loading, error and empty states, cart reconciliation, every payment gateway response, protected pages, safe post-login redirect, catalogue filters in the URL, totals, admin dashboard                                         |
+| E2E — 29                 | Playwright against the **real Shop API** in Docker, **axe**        | accessibility (WCAG 2.1 AA) in light and dark themes, the customer journey from catalogue to payment, a declined card and retry, gateway timeout, cancellation with refund, admin adds a product and delivers an order, sorting and filters, admin dashboard, permissions, mobile layout |
 
 The tests found and closed two frontend defects:
 
@@ -84,3 +84,9 @@ The API address is set with `VITE_API_URL` (see `.env.example`). After an API ch
 
 1. **Quality** — TypeScript, ESLint, Prettier, tests with a coverage threshold, build.
 2. **E2E** — starts Shop API, PostgreSQL and the payment gateway from the backend repository in Docker, checks the API contract and runs Playwright.
+
+## Security and accessibility
+
+- **Vercel headers:** a strict CSP (own scripts only, requests only to our API), HSTS, no framing. Policy: [SECURITY.md](SECURITY.md).
+- **Every CI run:** npm audit, CodeQL and axe accessibility checks of the storefront, cart, orders and admin — in light and dark themes.
+- **What the checks found:** low-contrast status badge and active link, button names that did not match their visible text, a prohibited ARIA attribute, and a critical `tinypool` advisory (via Vitest 3). All fixed.

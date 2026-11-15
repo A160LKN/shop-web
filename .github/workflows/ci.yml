@@ -17,6 +17,8 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
+      - name: Уязвимости в зависимостях (npm audit)
+        run: npm audit --audit-level=moderate
       - name: TypeScript
         run: npm run typecheck
       - name: ESLint
@@ -29,7 +31,7 @@ jobs:
         run: npm run build
 
   e2e:
-    name: E2E на настоящем Shop API
+    name: E2E и доступность (axe) на настоящем Shop API
     needs: quality
     runs-on: ubuntu-24.04
     steps:

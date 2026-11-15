@@ -68,7 +68,7 @@ it('категории — по алфавиту русских названий
 it('товар без остатка нельзя положить в корзину', async () => {
   server.use(http.get(`${API}/products`, () => HttpResponse.json(page([product({ stock: 0 })]))));
   renderPage(<CatalogPage />);
-  const button = await screen.findByRole('button', { name: /в корзину/i });
+  const button = await screen.findByRole('button', { name: /нет в наличии/i });
   expect(button).toBeDisabled();
 });
 
